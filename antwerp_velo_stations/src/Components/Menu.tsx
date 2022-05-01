@@ -1,9 +1,13 @@
 import React from "react";
-
+import Sidebar from "./Layout/Sidebar";
 type Props = {};
 
 function Menu({}: Props) {
-  return <div className=" bg-white h-full">Menu</div>;
+  return (
+    <>
+      <Sidebar></Sidebar>
+    </>
+  );
 }
 
 export default Menu;

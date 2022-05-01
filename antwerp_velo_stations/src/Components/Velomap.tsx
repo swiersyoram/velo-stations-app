@@ -10,7 +10,8 @@ import {
   useMapEvent,
   useMapEvents,
 } from "react-leaflet";
-import VeloDataService from "../Lib/VeloDataService";
+import VeloDataService from "../Api/VeloDataService";
+
 import Station from "./Map/Station";
 import UpdateMap from "./Map/UpdateMap";
 
@@ -21,7 +22,7 @@ function Velomap({}: Props) {
   useEffect(() => {
     VeloDataService.GetAllStations().then((res) => {
       setstations(res);
-      console.log(stations);
+      // console.log(stations);
     });
   }, []);
   const [stations, setstations] = useState([]);
@@ -47,15 +48,15 @@ function Velomap({}: Props) {
           // console.log(station);
 
           return (
-            // <Station
-            //   position={[station.latitude, station.longitude]}
-            //   key={station.name}
-            // ></Station>
-            <Marker position={[station.latitude, station.longitude]}>
-              <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-              </Popup>
-            </Marker>
+            <Station
+              position={[station.latitude, station.longitude]}
+              key={station.name}
+            ></Station>
+            // <Marker position={[station.latitude, station.longitude]}>
+            //   <Popup>
+            //     A pretty CSS3 popup. <br /> Easily customizable.
+            //   </Popup>
+            // </Marker>
           );
         })}
       </MapContainer>{" "}

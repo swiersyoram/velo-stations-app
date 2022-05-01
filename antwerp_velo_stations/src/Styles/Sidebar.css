@@ -1,0 +1,4 @@
+.routewrapper:hover .routeicon {
+  @apply fill-white;
+  @apply duration-300;
+}

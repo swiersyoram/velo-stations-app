@@ -8,7 +8,7 @@ import Menu from "./Components/Menu";
 function App() {
   return (
     <Layout>
-      <div className="fixed w-full flex">
+      <div className="fixed w-full h-full flex">
         <Velomap></Velomap>
         <Menu></Menu>
       </div>
