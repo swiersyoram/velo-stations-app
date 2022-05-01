@@ -1,6 +1,6 @@
 import axios from "axios";
-import { LatLngExpression, map } from "leaflet";
-import React, { useEffect, useState } from "react";
+import { LatLngExpression, Map, map } from "leaflet";
+import React, { useEffect, useRef, useState } from "react";
 import {
   MapContainer,
   Marker,
@@ -23,11 +23,10 @@ function Velomap({}: Props) {
   useEffect(() => {
     VeloDataService.GetAllStations().then((res) => {
       setstations(res);
-      console.log(stations);
+      console.log(res);
     });
   }, []);
   const [stations, setstations] = useState([]);
-
   const [position, setPosition] = useState(null);
 
   return (

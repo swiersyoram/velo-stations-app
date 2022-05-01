@@ -1,7 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-
+import mapreducer from "../features/MapSlice";
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    map: mapreducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
