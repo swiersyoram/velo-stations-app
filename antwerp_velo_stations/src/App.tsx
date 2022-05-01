@@ -4,7 +4,7 @@ import Layout from "./Components/Layout/Layout";
 import "./App.css";
 import { BrowserRouter as Router, Routes } from "react-router-dom";
 import Velomap from "./Components/Velomap";
-import Menu from "./Menu/Menu";
+import Menu from "./Components/Menu";
 function App() {
   return (
     <Layout>
