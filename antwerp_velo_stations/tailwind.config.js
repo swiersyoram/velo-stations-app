@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       colors: {
         veloorange: "#F9B23E",
+        antwerpred: "#CF0139",
       },
     },
   },

@@ -11,6 +11,7 @@ import {
   useMapEvents,
 } from "react-leaflet";
 import VeloDataService from "../Api/VeloDataService";
+import { station } from "../Models/station";
 
 import Station from "./Map/Station";
 import UpdateMap from "./Map/UpdateMap";
@@ -22,7 +23,7 @@ function Velomap({}: Props) {
   useEffect(() => {
     VeloDataService.GetAllStations().then((res) => {
       setstations(res);
-      // console.log(stations);
+      console.log(stations);
     });
   }, []);
   const [stations, setstations] = useState([]);
@@ -44,14 +45,11 @@ function Velomap({}: Props) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <UpdateMap />
-        {stations.map((station: any) => {
+        {stations.map((station: station) => {
           // console.log(station);
 
           return (
-            <Station
-              position={[station.latitude, station.longitude]}
-              key={station.name}
-            ></Station>
+            <Station station={station} key={station.id}></Station>
             // <Marker position={[station.latitude, station.longitude]}>
             //   <Popup>
             //     A pretty CSS3 popup. <br /> Easily customizable.
