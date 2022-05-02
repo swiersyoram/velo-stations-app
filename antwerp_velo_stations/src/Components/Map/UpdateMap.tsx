@@ -1,3 +1,4 @@
+import { createSelector } from "@reduxjs/toolkit";
 import { stat } from "fs";
 import React, { useEffect, useRef, useState } from "react";
 import { useMap, useMapEvent, useMapEvents } from "react-leaflet";
@@ -9,11 +10,14 @@ type Props = {};
 
 function UpdateMap({}: Props) {
   const map = useMap();
-  // useSelector((state: RootState) => {
-  //   console.log(state);
-  //   if (state.map) map.flyTo([50, state.map.value]);
+
+  // const mapvalue = useSelector((state: RootState) => {
   //   return state.map.value;
   // });
+  // useEffect(() => {
+  //   console.log("changed");
+  //   map.flyTo([mapvalue.lat, mapvalue.len]);
+  // }, [mapvalue]);
 
   // map.flyTo([50, 4]);
   // const map = useMapEvents({

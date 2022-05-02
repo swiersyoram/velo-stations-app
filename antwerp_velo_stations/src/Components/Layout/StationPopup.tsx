@@ -1,5 +1,6 @@
+import { LeafletElement } from "@react-leaflet/core";
 import L from "leaflet";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   MapContainer,
   Marker,
@@ -10,8 +11,13 @@ import {
   useMapEvents,
   ZoomControl,
 } from "react-leaflet";
-import { useDispatch } from "react-redux";
-import { addFavoriteStation } from "../../features/FavoriteStationsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../App/store";
+import {
+  addFavoriteStation,
+  removeFavoriteStation,
+} from "../../features/FavoriteStationsSlice";
+import { setMap } from "../../features/MapSlice";
 import { station } from "../../Models/station";
 
 type Props = {
@@ -23,32 +29,60 @@ function StationPopup({ station }: Props) {
   const dispatch = useDispatch();
   const icon = L.icon({
     iconUrl: stationIcon(station),
-    iconSize: [75, 150],
+    iconSize: [40, 80],
     popupAnchor: [0, -20],
   });
 
   function onClick() {
-    map.flyTo([station.latitude, station.longitude]);
+    dispatch(setMap({ value: station.id }));
   }
   function stationIcon(station: station): string {
     if (station.empty_slots == 0) return "/assets/images/markerfull.svg";
     if (station.free_bikes == 0) return "/assets/images/markerempty.svg";
     return "/assets/images/markeravailable.svg";
   }
+
+  const leafletRef = useRef<any>();
+  const mapvalue = useSelector((state: RootState) => {
+    return state.map.value;
+  });
+  const favorite = useSelector((state: RootState) => {
+    if (state.favorite_stations.value.includes(station.id)) return true;
+    else return false;
+  });
+  useEffect(() => {
+    if (mapvalue == station.id) {
+      map.setView([station.latitude, station.longitude], 18);
+      leafletRef.current.openPopup();
+    }
+  }, [map, mapvalue, station.id, station.latitude, station.longitude]);
+
   return (
     <>
       <Marker
         position={[station.latitude, station.longitude]}
         eventHandlers={{ click: onClick }}
         icon={icon}
+        ref={leafletRef}
       >
         <Popup>
-          <div className="flex justify-center items-center">
+          <div className="flex  items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 576 512"
-              className="w-5 fill-gray-300 hover:cursor-pointer mr-1 hover:fill-gray-700 duration-300"
-              onClick={() => dispatch(addFavoriteStation(station.id))}
+              className={
+                "w-5  hover:cursor-pointer mr-1  duration-300 " +
+                (favorite
+                  ? "hover:fill-yellow-600 fill-yellow-400"
+                  : "hover:fill-gray-700 fill-gray-300")
+              }
+              onClick={() => {
+                if (favorite) {
+                  dispatch(removeFavoriteStation(station.id));
+                } else {
+                  dispatch(addFavoriteStation(station.id));
+                }
+              }}
             >
               <path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z" />
             </svg>
@@ -56,7 +90,18 @@ function StationPopup({ station }: Props) {
               {station.name}
             </span>
           </div>
-
+          <div className="flex mb-2 mr-3 mt-2 items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              className="w-4 fill-red-500 mr-2"
+            >
+              <path d="M176 256C176 211.8 211.8 176 256 176C300.2 176 336 211.8 336 256C336 300.2 300.2 336 256 336C211.8 336 176 300.2 176 256zM256 0C273.7 0 288 14.33 288 32V66.65C368.4 80.14 431.9 143.6 445.3 224H480C497.7 224 512 238.3 512 256C512 273.7 497.7 288 480 288H445.3C431.9 368.4 368.4 431.9 288 445.3V480C288 497.7 273.7 512 256 512C238.3 512 224 497.7 224 480V445.3C143.6 431.9 80.14 368.4 66.65 288H32C14.33 288 0 273.7 0 256C0 238.3 14.33 224 32 224H66.65C80.14 143.6 143.6 80.14 224 66.65V32C224 14.33 238.3 0 256 0zM128 256C128 326.7 185.3 384 256 384C326.7 384 384 326.7 384 256C384 185.3 326.7 128 256 128C185.3 128 128 185.3 128 256z" />
+            </svg>
+            <span className="font-bold text-neutral-400 text-xs">
+              {station.extra.address}
+            </span>
+          </div>
           <div className="font-extrabold text-gray-500 text-lg flex">
             <div className="flex mr-3">
               <svg

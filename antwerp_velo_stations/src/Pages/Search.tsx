@@ -16,7 +16,7 @@ function Search({}: Props) {
   return (
     <div className="h-full overflow-clip">
       <h1 className="font-bold text-antwerpred text-3xl">Zoek een station</h1>
-      <p className="font-normal text-sm text-gray-400">
+      <p className="font-normal  text-gray-400 mt-2">
         Zoek naar een station op basis van nummer of naam
       </p>
       <div className="mt-5 h-full">
@@ -30,7 +30,7 @@ function Search({}: Props) {
           </svg>
           <input
             type="text"
-            className="border-2 border-antwerpred rounded-md px-2 py-1  grow"
+            className="border-[3px] border-antwerpred rounded-md px-2 py-1  grow"
             onChange={(e) => setsearch(e.target.value)}
           />
         </div>
@@ -38,7 +38,7 @@ function Search({}: Props) {
         {/* <button className="bg-antwerpred text-white px-5 py-1 rounded-md">
           Zoeken
         </button> */}
-        <hr className="my-5 border-2 rounded-full" />
+        <hr className="my-5 border-2 rounded-full border-black" />
         <div className="overflow-y-scroll max-h-full">
           {stations
             .filter((station: station) =>

@@ -1,18 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { map, Map } from "leaflet";
-import { act } from "react-dom/test-utils";
+import { LatLngExpression } from "leaflet";
 
 interface MapState {
-  value: any;
+  value: string;
 }
 const initialState = {
-  value: 1,
+  value: "",
 };
 export const MapSlice = createSlice({
   name: "stations",
   initialState,
   reducers: {
-    setMap: (state: MapState, action: PayloadAction<any>) => {
+    setMap: (state: MapState, action: PayloadAction<MapState>) => {
       return action.payload;
     },
   },

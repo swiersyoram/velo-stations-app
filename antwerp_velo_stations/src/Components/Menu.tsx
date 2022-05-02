@@ -9,19 +9,17 @@ type Props = {};
 
 function Menu({}: Props) {
   return (
-    <div className="absolute right-0 z-[9999] top-0 h-full bg-white flex">
-      <Router>
-        <Menudrawer>
-          <Routes>
-            <Route path="/" element={null}></Route>
-            <Route path="/info" element={<Info></Info>}></Route>
-            <Route path="/search" element={<Search></Search>}></Route>
-            <Route path="/favorites" element={<Favorites></Favorites>}></Route>
-          </Routes>
-        </Menudrawer>
-        <Sidebar></Sidebar>
-      </Router>
-    </div>
+    <Router>
+      <Menudrawer>
+        <Routes>
+          <Route path="/" element={<Info></Info>}></Route>
+          <Route path="/info" element={<Info></Info>}></Route>
+          <Route path="/search" element={<Search></Search>}></Route>
+          <Route path="/favorites" element={<Favorites></Favorites>}></Route>
+        </Routes>
+      </Menudrawer>
+      <Sidebar></Sidebar>
+    </Router>
   );
 }
 

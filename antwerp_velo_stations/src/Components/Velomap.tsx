@@ -44,7 +44,8 @@ function Velomap({}: Props) {
   return (
     <div className="w-full h-full ">
       <MapContainer
-        preferCanvas={true}
+        // preferCanvas={true}
+        closePopupOnClick={true}
         center={location}
         zoom={18}
         scrollWheelZoom={true}

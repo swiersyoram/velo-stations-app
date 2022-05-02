@@ -2,9 +2,10 @@ import { map } from "leaflet";
 import React, { useEffect } from "react";
 import { Root } from "react-dom/client";
 import { useMap } from "react-leaflet";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../App/store";
 import StationCardFavorite from "../Components/Layout/StationCardFavorite";
+import { setMap } from "../features/MapSlice";
 import { station } from "../Models/station";
 
 type Props = {};
@@ -24,7 +25,7 @@ function Favorites({}: Props) {
   return (
     <div>
       <h1 className="font-bold text-antwerpred text-3xl">Favorieten</h1>
-      <p className="font-normal text-sm text-gray-400">
+      <p className="font-normal  text-gray-400 mt-2">
         Hieronder vind je de stations die jij hebt opgeslagen als favoriet.
       </p>
       <div className="mt-5">
