@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "./Layout/Sidebar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Info from "../Pages/Info";
@@ -9,7 +9,7 @@ type Props = {};
 
 function Menu({}: Props) {
   return (
-    <>
+    <div className="absolute right-0 z-[9999] top-0 h-full bg-white flex">
       <Router>
         <Menudrawer>
           <Routes>
@@ -21,7 +21,7 @@ function Menu({}: Props) {
         </Menudrawer>
         <Sidebar></Sidebar>
       </Router>
-    </>
+    </div>
   );
 }
 

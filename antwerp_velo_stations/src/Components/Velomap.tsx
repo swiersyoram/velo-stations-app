@@ -1,3 +1,4 @@
+import { stat } from "fs";
 import { LatLngExpression, Map, map } from "leaflet";
 import React, { useEffect, useRef, useState } from "react";
 import {
@@ -9,33 +10,46 @@ import {
   useMapEvent,
   useMapEvents,
 } from "react-leaflet";
-import VeloDataService from "../Api/VeloDataService";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../App/store";
+import { fetchStations } from "../features/StationSlice";
+// import VeloDataService from "../Api/VeloDataService";
 import { station } from "../Models/station";
 
-import Station from "./Map/Station";
+import StationPopup from "./Layout/StationPopup";
 import UpdateMap from "./Map/UpdateMap";
 
 type Props = {};
 
 let location: LatLngExpression = [51.2197847, 4.4011165];
 function Velomap({}: Props) {
+  // const stations: station[] = [];
+  const dispatch = useDispatch<AppDispatch>();
+  const stations = useSelector((state: RootState) => {
+    // console.log(state.stations);
+    return state.stations.stations;
+  });
   useEffect(() => {
-    VeloDataService.GetAllStations().then((res) => {
-      setstations(res);
-      console.log(res);
-    });
-  }, []);
-  const [stations, setstations] = useState([]);
+    dispatch(fetchStations());
+    // console.log("fetch");
+
+    const polling = setInterval(() => {
+      // console.log("refresh");
+
+      dispatch(fetchStations());
+    }, 10000);
+    return () => clearInterval(polling);
+  }, [dispatch]);
 
   return (
-    <div className="bg-blue-500  w-full h-screen " id="map">
+    <div className="w-full h-full ">
       <MapContainer
         preferCanvas={true}
         center={location}
         zoom={18}
         scrollWheelZoom={true}
         zoomControl={false}
-        className="w-full h-full"
+        className="w-full h-full "
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -43,9 +57,11 @@ function Velomap({}: Props) {
         />
         <UpdateMap />
         {stations.map((station: station) => {
-          return <Station station={station} key={station.id}></Station>;
+          return (
+            <StationPopup station={station} key={station.id}></StationPopup>
+          );
         })}
-      </MapContainer>{" "}
+      </MapContainer>
     </div>
   );
 }
