@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-type station = {};
+import { station } from "../Models/station";
 
 interface Stationstate {
-  value: string[];
+  value: station[];
 }
 const initialState = {
   value: [],
@@ -12,7 +11,7 @@ export const StationSlice = createSlice({
   name: "stations",
   initialState,
   reducers: {
-    addStations: (state: Stationstate, action: PayloadAction<string>) => {
+    addStations: (state: Stationstate, action: PayloadAction<station>) => {
       state.value.push(action.payload);
     },
   },

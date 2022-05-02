@@ -1,4 +1,3 @@
-import axios from "axios";
 import { LatLngExpression, Map, map } from "leaflet";
 import React, { useEffect, useRef, useState } from "react";
 import {
@@ -27,7 +26,6 @@ function Velomap({}: Props) {
     });
   }, []);
   const [stations, setstations] = useState([]);
-  const [position, setPosition] = useState(null);
 
   return (
     <div className="bg-blue-500  w-full h-screen " id="map">
@@ -45,16 +43,7 @@ function Velomap({}: Props) {
         />
         <UpdateMap />
         {stations.map((station: station) => {
-          // console.log(station);
-
-          return (
-            <Station station={station} key={station.id}></Station>
-            // <Marker position={[station.latitude, station.longitude]}>
-            //   <Popup>
-            //     A pretty CSS3 popup. <br /> Easily customizable.
-            //   </Popup>
-            // </Marker>
-          );
+          return <Station station={station} key={station.id}></Station>;
         })}
       </MapContainer>{" "}
     </div>

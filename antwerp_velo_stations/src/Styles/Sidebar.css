@@ -1,4 +1,11 @@
-.routewrapper:hover .routeicon {
+.routewrapper:hover svg {
   @apply fill-white;
   @apply duration-300;
+}
+
+.active {
+  @apply bg-veloorange;
+}
+.active svg {
+  @apply fill-white;
 }
