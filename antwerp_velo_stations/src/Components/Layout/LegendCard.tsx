@@ -23,7 +23,7 @@ function LegendCard({}: Props) {
   ];
 
   return (
-    <div className="absolute left-5  z-10 top-0 bottom-0  my-auto h-fit  text-3xl font-bold gap-2 items-center bg-neutral-50 p-5 bg-opacity-80 shadow-sm">
+    <div className="absolute left-5  z-10 top-0 bottom-0  my-auto h-fit  text-3xl font-bold  bg-neutral-50 p-5 bg-opacity-80 shadow-sm hidden sm:block">
       <div className="flex">
         <svg
           xmlns="http://www.w3.org/2000/svg"

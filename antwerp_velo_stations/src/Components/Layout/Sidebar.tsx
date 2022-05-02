@@ -13,8 +13,8 @@ function Sidebar({}: Props) {
 
   const dispatch = useDispatch();
   return (
-    <div className="h-full w-16 flex flex-col justify-between">
-      <div className="grid grid-cols-1 grid-rows-3 navwrapper ">
+    <div className="h-fit sm:h-full sm:w-20 lg:w-16 flex flex-col  justify-between ">
+      <div className="grid grid-rows-1 grid-cols-3 sm:grid-cols-1 sm:grid-rows-3 navwrapper ">
         {routes.map((route) => (
           <NavLink
             to={route.link}
@@ -31,7 +31,7 @@ function Sidebar({}: Props) {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 grid-rows-2  ">
+      <div className="grid grid-cols-1 grid-rows-2 hidden  sm:grid">
         {externallinks.map((link) => (
           <div className="  h-fit m-auto w-10  py-3 " key={link.url}>
             <a href={link.url} target="_blank">

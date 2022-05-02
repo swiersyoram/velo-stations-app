@@ -9,7 +9,11 @@ type Props = {
 };
 
 function Menudrawer({ children }: Props) {
-  return <div className="h-full p-5 w-96">{children}</div>;
+  return (
+    <div className="h-full p-5 sm:w-96 overflow-y-scroll sm:overflow-hidden ">
+      {children}
+    </div>
+  );
 }
 
 export default Menudrawer;

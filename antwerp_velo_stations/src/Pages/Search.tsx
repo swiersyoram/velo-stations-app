@@ -39,7 +39,7 @@ function Search({}: Props) {
           Zoeken
         </button> */}
         <hr className="my-5 border-2 rounded-full border-black" />
-        <div className="overflow-y-scroll max-h-full">
+        <div className="overflow-y-scroll max-h-full min-h-[200px]">
           {stations
             .filter((station: station) =>
               station.name.match(new RegExp(search, "gi"))
