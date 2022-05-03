@@ -18,6 +18,7 @@ import { station } from "../Models/station";
 
 import StationPopup from "./Layout/StationPopup";
 import UpdateMap from "./Map/UpdateMap";
+import UserLocation from "./Map/UserLocation";
 
 type Props = {};
 
@@ -57,6 +58,7 @@ function Velomap({}: Props) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <UpdateMap />
+        <UserLocation></UserLocation>
         {stations.map((station: station) => {
           return (
             <StationPopup station={station} key={station.id}></StationPopup>
