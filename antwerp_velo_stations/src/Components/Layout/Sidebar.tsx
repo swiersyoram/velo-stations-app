@@ -13,7 +13,7 @@ function Sidebar({}: Props) {
 
   const dispatch = useDispatch();
   return (
-    <div className="h-fit sm:h-full sm:w-20 lg:w-16 flex flex-col  justify-between ">
+    <div className="h-fit sm:h-full sm:w-20 lg:w-16 flex flex-col  justify-between border-t-4 border-gray-100">
       <div className="grid grid-rows-1 grid-cols-3 sm:grid-cols-1 sm:grid-rows-3 navwrapper ">
         {routes.map((route) => (
           <NavLink
