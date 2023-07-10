@@ -1,11 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { useLocation } from "react-router-dom";
 
 interface DrawerState {
   value: { open: boolean };
 }
 const initialState = () => {
-  //   console.log(window.location.pathname);
   if (window.location.pathname !== "/") return { value: { open: true } };
   else return { value: { open: false } };
 };

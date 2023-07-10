@@ -1,8 +1,6 @@
 import React from "react";
 
-type Props = {};
-
-function Footer({}: Props) {
+function Footer() {
   return (
     <footer className="fixed bottom-0 w-fit h-fit hidden sm:block">
       <div className="w-20 h-20 flex justify-center bg-antwerpred">

@@ -1,13 +1,11 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink, Router, Routes } from "react-router-dom";
-import { RootState } from "../../App/store";
+import { useDispatch} from "react-redux";
+import {  NavLink,} from "react-router-dom";
 import { opendrawer } from "../../features/MenuSlice";
 import { sidebarexternallinks, sidebarroutes } from "../../Lib/SidebarRoutes";
 import "../../Styles/Sidebar.css";
-type Props = {};
 
-function Sidebar({}: Props) {
+function Sidebar() {
   const routes = sidebarroutes;
   const externallinks = sidebarexternallinks;
 
@@ -34,7 +32,7 @@ function Sidebar({}: Props) {
       <div className="grid grid-cols-1 grid-rows-2 hidden  sm:grid">
         {externallinks.map((link) => (
           <div className="  h-fit m-auto w-10  py-3 " key={link.url}>
-            <a href={link.url} target="_blank">
+            <a href={link.url} target="_blank" rel="noreferrer">
               <img src={link.img} alt="" />
             </a>
           </div>

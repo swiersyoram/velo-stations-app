@@ -1,9 +1,9 @@
-import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import mapreducer from "../features/MapSlice";
 import drawerreducer from "../features/MenuSlice";
 import stationreducer from "../features/StationSlice";
 import favoritestationreducer from "../features/FavoriteStationsSlice";
-import {userReducer} from "../features/UserSlice";
+import { userReducer } from "../features/UserSlice";
 export const store = configureStore({
   reducer: {
     map: mapreducer,

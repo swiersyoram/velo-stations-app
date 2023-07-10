@@ -5,7 +5,7 @@ FROM openjdk:11-jdk
 WORKDIR /app
 
 # Copy the packaged JAR file to the container
-COPY target/antwerp-velo-responseStations-0.0.1-SNAPSHOT.jar /app
+COPY /antwerp-velo-responseStations-0.0.1-SNAPSHOT.jar /app
 
 # Expose the port that the Spring Boot application uses
 EXPOSE 8080

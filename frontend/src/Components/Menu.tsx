@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Sidebar from "./Layout/Sidebar";
 import {
   BrowserRouter as Router,
@@ -10,9 +10,8 @@ import { InfoPage } from "../Pages/Info";
 import { Search } from "../Pages/Search";
 import Favorites from "../Pages/Favorites";
 import Menudrawer from "../Components/Layout/Menudrawer";
-type Props = {};
 
-function Menu({}: Props) {
+function Menu() {
   return (
     <Router>
       <Menudrawer>

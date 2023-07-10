@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeFavoriteStation } from "../../features/FavoriteStationsSlice";
 import { setMap } from "../../features/MapSlice";
 import { station } from "../../Models/station";
@@ -78,5 +78,3 @@ function StationCardFavorite({ station }: Props) {
 }
 
 export default StationCardFavorite;
-
-

@@ -1,12 +1,10 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {getAllStations} from "../Api/station.api";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getAllStations } from "../Api/station.api";
 
 export const fetchStations = createAsyncThunk(
   "stations/fetchstations",
   async () => {
-    const {data} = await getAllStations();
-    console.log(data);
-
+    const { data } = await getAllStations();
     return data;
   }
 );
@@ -18,13 +16,13 @@ const initialState = {
 export const StationSlice = createSlice({
   name: "Stations",
   initialState,
-  reducers:{},
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchStations.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchStations.fulfilled, (state, action: any) => {
+      .addCase(fetchStations.fulfilled, (state, action) => {
         state.status = "idle";
         state.stations = action.payload;
       })
@@ -34,5 +32,4 @@ export const StationSlice = createSlice({
   },
 });
 
-export const {} = StationSlice.actions;
 export default StationSlice.reducer;

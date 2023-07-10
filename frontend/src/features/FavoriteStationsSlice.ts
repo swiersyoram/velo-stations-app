@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { station } from "../Models/station";
+
 const key = "favoriteStations";
 type favoriteStation = {
   value: string[];
@@ -8,10 +8,9 @@ const initialState = {
   value: getstoredfavorites(),
 };
 function getstoredfavorites(): string[] {
-  if (localStorage.getItem(key)!) {
-    if (localStorage.getItem(key)!.length > 0) {
-      return localStorage.getItem(key)!.split(",");
-    } else return [];
+  const item = localStorage.getItem(key);
+  if (item && !!item.length) {
+    return item.split(",");
   } else return [];
 }
 export const FavoriteStationSlice = createSlice({

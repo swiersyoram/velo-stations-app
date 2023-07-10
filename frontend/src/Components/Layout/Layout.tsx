@@ -5,7 +5,7 @@ import {Header} from "./Header";
 
 interface IProps {
   children?: ReactNode;
-};
+}
 
 export const Layout = ({ children }: IProps) =>
     <>

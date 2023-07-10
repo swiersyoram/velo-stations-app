@@ -1,8 +1,4 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { RootState } from "../../App/store";
-import { opendrawer } from "../../features/MenuSlice";
+import React from "react";
 
 type Props = {
   children: React.ReactNode;

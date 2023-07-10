@@ -12,10 +12,9 @@ import StationPopup from "./Layout/StationPopup";
 import UserLocation from "./Map/UserLocation";
 import {fetchStations} from "../features/StationSlice";
 
-type Props = {};
 
-let location: LatLngExpression = [51.2197847, 4.4011165];
-function Velomap({}: Props) {
+const location: LatLngExpression = [51.2197847, 4.4011165];
+function Velomap() {
   const dispatch = useDispatch<AppDispatch>();
 
   const stations = useSelector((state: RootState) => {

@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeFavoriteStation } from "../../features/FavoriteStationsSlice";
 import { setMap } from "../../features/MapSlice";
 import { station } from "../../Models/station";
 

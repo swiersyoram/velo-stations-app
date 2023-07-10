@@ -1,18 +1,8 @@
-import { LeafletElement } from "@react-leaflet/core";
 import L from "leaflet";
-import React, { useEffect, useRef, useState } from "react";
-import {
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-  useMap,
-  useMapEvent,
-  useMapEvents,
-  ZoomControl,
-} from "react-leaflet";
+import React, { useEffect, useRef } from "react";
+import { Marker, Popup, useMap } from "react-leaflet";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../App/store";
+import { RootState } from "../../App/store";
 import {
   addFavoriteStation,
   removeFavoriteStation,
@@ -42,13 +32,13 @@ function StationPopup({ station }: Props) {
     return "/assets/images/markeravailable.svg";
   }
 
+  //eslint-disable-next-line
   const leafletRef = useRef<any>();
   const mapvalue = useSelector((state: RootState) => {
     return state.map.value;
   });
   const favorite = useSelector((state: RootState) => {
-    if (state.favorite_stations.value.includes(station.id)) return true;
-    else return false;
+    return !!state.favorite_stations.value.includes(station.id);
   });
   useEffect(() => {
     if (mapvalue == station.id) {

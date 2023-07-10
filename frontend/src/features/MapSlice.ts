@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { LatLngExpression } from "leaflet";
 
 interface MapState {
   value: string;
 }
+
 const initialState = {
   value: "",
 };

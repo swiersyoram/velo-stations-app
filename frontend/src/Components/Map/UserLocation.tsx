@@ -1,14 +1,10 @@
 import L, { LatLngExpression } from "leaflet";
 import React, { useEffect, useState } from "react";
 import { Marker, useMap } from "react-leaflet";
-import { useDispatch } from "react-redux";
-import { setMap } from "../../features/MapSlice";
 
-type Props = {};
 
-function UserLocation({}: Props) {
+function UserLocation() {
   const map = useMap();
-  const dispatch = useDispatch();
   const [userpos, setuserpos] = useState<LatLngExpression>();
   const icon = L.icon({
     iconUrl: "/assets/images/userlocation.svg",
