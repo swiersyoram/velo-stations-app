@@ -16,14 +16,13 @@ COPY . .
 # Build the React app
 RUN npm run build
 
-# Use a lightweight web server to serve the static files
+# Use Nginx as the web server
 FROM nginx:1.21.1-alpine
 
 # Copy the built React app from the previous stage
 COPY --from=build /app/build /usr/share/nginx/html
 
-# Expose port 80
-EXPOSE 3000
+EXPOSE 80
 
-# Start NGINX web server
+# Start NGINX web server in the foreground
 CMD ["nginx", "-g", "daemon off;"]
