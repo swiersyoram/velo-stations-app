@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:3000")
 public class restController {
     StationDao stationDao;

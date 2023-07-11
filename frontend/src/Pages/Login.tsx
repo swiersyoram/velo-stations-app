@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../features/UserSlice";
 import { AppDispatch } from "../App/store";
 import { IAuth } from "../Models/auth.type";
+import { ReactComponent as Logo } from "../assets/FullLogo.svg";
 
 export const Login = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -14,7 +15,7 @@ export const Login = () => {
   return (
     <div className={"w-full h-screen flex justify-center items-center"}>
       <div className={"flex items-center flex-col"}>
-        <img src="assets/images/Fulllogo.svg" alt="" className={"w-36 mb-6"} />
+        <Logo className={"mb-5"} />
         <Form onFinish={onSubmit}>
           <Form.Item name={"username"} initialValue={""}>
             <input

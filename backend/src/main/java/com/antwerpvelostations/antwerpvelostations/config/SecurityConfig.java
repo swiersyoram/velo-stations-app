@@ -29,7 +29,7 @@ public class SecurityConfig {
 //        httpSecurity.requiresChannel(channel -> channel.anyRequest().requiresSecure());
         httpSecurity.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         httpSecurity.authorizeRequests()
-                .requestMatchers("/h2-console/**", "/login", "/authenticate").permitAll()
+                .requestMatchers("/h2-console/**", "/api/login", "/api/authenticate").permitAll()
                 .anyRequest().authenticated();
         httpSecurity.exceptionHandling(exception -> exception.authenticationEntryPoint(
                 (request, response, ex) -> {
