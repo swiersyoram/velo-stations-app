@@ -1,17 +1,13 @@
 import { LatLngExpression } from "leaflet";
-import React, { useEffect} from "react";
-import {
-  MapContainer,
-  TileLayer,
-} from "react-leaflet";
+import React, { useEffect } from "react";
+import { MapContainer, TileLayer } from "react-leaflet";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../App/store";
 import { station } from "../Models/station";
 
 import StationPopup from "./Layout/StationPopup";
 import UserLocation from "./Map/UserLocation";
-import {fetchStations} from "../features/StationSlice";
-
+import { fetchStations } from "../slices/StationSlice";
 
 const location: LatLngExpression = [51.2197847, 4.4011165];
 function Velomap() {
@@ -22,7 +18,7 @@ function Velomap() {
   });
 
   useEffect(() => {
-      dispatch(fetchStations());
+    dispatch(fetchStations());
   }, []);
 
   useEffect(() => {

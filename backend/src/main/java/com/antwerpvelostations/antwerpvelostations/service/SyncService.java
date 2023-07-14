@@ -31,7 +31,7 @@ public class SyncService {
         this.stationDao = stationDao;
     }
 
-    @Scheduled(fixedRate = 60000)
+//    @Scheduled(fixedRate = 60000)
     public void fetchDataFromAPI() throws JsonProcessingException {
         System.out.println("Sync database");
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);

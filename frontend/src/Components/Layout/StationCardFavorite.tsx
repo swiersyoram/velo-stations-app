@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeFavoriteStation } from "../../features/FavoriteStationsSlice";
-import { setMap } from "../../features/MapSlice";
+import { removeFavoriteStation } from "../../slices/FavoriteStationsSlice";
+import { setMap } from "../../slices/MapSlice";
 import { station } from "../../Models/station";
 
 type Props = {

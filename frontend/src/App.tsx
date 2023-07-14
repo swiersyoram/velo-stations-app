@@ -4,7 +4,7 @@ import Velomap from "./Components/Velomap";
 import Menu from "./Components/Menu";
 import { Layout } from "./Components/Layout/Layout";
 import { Login } from "./Pages/Login";
-import { authenticate } from "./features/UserSlice";
+import { authenticate } from "./slices/UserSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./App/store";
 

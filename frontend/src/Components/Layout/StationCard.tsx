@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setMap } from "../../features/MapSlice";
+import { setMap } from "../../slices/MapSlice";
 import { station } from "../../Models/station";
 
 type Props = {

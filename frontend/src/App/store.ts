@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import mapreducer from "../features/MapSlice";
-import drawerreducer from "../features/MenuSlice";
-import stationreducer from "../features/StationSlice";
-import favoritestationreducer from "../features/FavoriteStationsSlice";
-import { userReducer } from "../features/UserSlice";
+import mapreducer from "../slices/MapSlice";
+import drawerreducer from "../slices/MenuSlice";
+import stationreducer from "../slices/StationSlice";
+import favoritestationreducer from "../slices/FavoriteStationsSlice";
+import { userReducer } from "../slices/UserSlice";
 export const store = configureStore({
   reducer: {
     map: mapreducer,

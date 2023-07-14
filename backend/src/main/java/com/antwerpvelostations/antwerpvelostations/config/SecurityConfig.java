@@ -20,22 +20,21 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SecurityConfig {
-    @Autowired
     JwtFilter jwtFilter;
+
+    @Autowired
+    public SecurityConfig(JwtFilter jwtFilter) {
+        this.jwtFilter = jwtFilter;
+    }
 
     @Bean
     public DefaultSecurityFilterChain defaultSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf(csrf -> csrf.disable());
-//        httpSecurity.requiresChannel(channel -> channel.anyRequest().requiresSecure());
         httpSecurity.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         httpSecurity.authorizeRequests()
-                .requestMatchers("/h2-console/**", "/api/login", "/api/authenticate").permitAll()
+                .requestMatchers("/h2-console/**", "/api/login", "/api/authenticate", "/api/logout").permitAll()
                 .anyRequest().authenticated();
-        httpSecurity.exceptionHandling(exception -> exception.authenticationEntryPoint(
-                (request, response, ex) -> {
-                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
-                }
-        ));
+
 
         httpSecurity.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 

@@ -6,8 +6,8 @@ import { RootState } from "../../App/store";
 import {
   addFavoriteStation,
   removeFavoriteStation,
-} from "../../features/FavoriteStationsSlice";
-import { setMap } from "../../features/MapSlice";
+} from "../../slices/FavoriteStationsSlice";
+import { setMap } from "../../slices/MapSlice";
 import { station } from "../../Models/station";
 
 type Props = {

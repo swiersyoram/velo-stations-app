@@ -1,13 +1,14 @@
 import React from "react";
 import { Button, Form } from "antd";
-import { useDispatch } from "react-redux";
-import { login } from "../features/UserSlice";
-import { AppDispatch } from "../App/store";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../slices/UserSlice";
+import { AppDispatch, RootState } from "../App/store";
 import { IAuth } from "../Models/auth.type";
 import { ReactComponent as Logo } from "../assets/FullLogo.svg";
 
 export const Login = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const isError = useSelector((state: RootState) => state.user.error);
   const onSubmit = (values: IAuth) => {
     dispatch(login(values));
   };
@@ -31,6 +32,9 @@ export const Login = () => {
               className={"w-full rounded-md border-2 border-gray-300 p-2"}
             />
           </Form.Item>
+          {isError && (
+            <div className={"text-red-600 mb-5"}>{"Error, can't log in."}</div>
+          )}
           <Button
             type="primary"
             htmlType="submit"

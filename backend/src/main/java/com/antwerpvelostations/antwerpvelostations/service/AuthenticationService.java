@@ -32,8 +32,4 @@ public class AuthenticationService {
         }
     }
 
-    public boolean isUserAuthenticated(String token){
-        return jwtService.validateToken(token);
-    }
-
 }
