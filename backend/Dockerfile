@@ -1,5 +1,5 @@
 # Use an official OpenJDK runtime as the base image
-FROM openjdk:11-jdk
+FROM openjdk:17-jdk
 
 # Set the working directory in the container
 WORKDIR /app
@@ -11,4 +11,4 @@ COPY /antwerp-velo-responseStations-0.0.1-SNAPSHOT.jar /app
 EXPOSE 8080
 
 # Set the entrypoint command to run the JAR file
-ENTRYPOINT ["java", "-jar", "my-spring-boot-app.jar"]
+ENTRYPOINT ["java", "-jar", "antwerp-velo-responseStations-0.0.1-SNAPSHOT.jar"]
