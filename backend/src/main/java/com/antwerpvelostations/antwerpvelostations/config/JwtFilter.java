@@ -29,22 +29,17 @@ public class JwtFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
-        String token = JwtTokenExtractor.extractTokenFromCookie(request, "token");;
+        String token = extractTokenFromCookie(request, "token");
 
         if (token != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             if (jwtService.validateToken(token)) {
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(jwtService.getUsernameFromToken(token), null, null);
-                System.out.println(authentication);
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
         filterChain.doFilter(request, response);
     }
-
-
-    public class JwtTokenExtractor {
 
         public static String extractTokenFromCookie(HttpServletRequest request, String cookieName) {
             Cookie[] cookies = request.getCookies();
@@ -57,5 +52,5 @@ public class JwtFilter extends OncePerRequestFilter {
             }
             return null;
         }
-    }
+
 }

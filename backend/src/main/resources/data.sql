@@ -1,8 +1,3 @@
-DROP SCHEMA IF EXISTS `velo-app` CASCADE;
-CREATE SCHEMA `velo-app`;
-use
-`velo-app`;
-
 CREATE TABLE users
 (
     `username` varchar(60) default null,
@@ -11,7 +6,6 @@ CREATE TABLE users
     PRIMARY KEY (`username`)
 );
 
-
 CREATE TABLE roles
 (
     `username` varchar(60) default null,
@@ -19,7 +13,7 @@ CREATE TABLE roles
     FOREIGN KEY (username) REFERENCES users(username)
 );
 
-CREATE TABLE stations
+CREATE TABLE IF NOT EXISTS stations
 (
     id          VARCHAR(32),
     empty_slots INT,

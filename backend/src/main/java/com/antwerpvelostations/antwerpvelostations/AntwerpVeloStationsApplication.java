@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.security.provisioning.UserDetailsManager;
 
 import java.util.Date;
 
@@ -19,8 +20,8 @@ public class AntwerpVeloStationsApplication {
 		SpringApplication.run(AntwerpVeloStationsApplication.class, args);
 	}
 //	@Bean
-//	public CommandLineRunner run(SyncService syncService) throws Exception {
-//		return args -> syncService.fetchDataFromAPI();
+//	public CommandLineRunner run(UserDetailsManager userDetailsManager) throws Exception {
+//		return args -> System.out.println(userDetailsManager.userExists("yoram"));
 //	}
 
 }
